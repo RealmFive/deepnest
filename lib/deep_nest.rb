@@ -2,16 +2,16 @@
 
 module DeepNest
   class << self
-    def deep_dup(obj)
-      case obj
-      when Array
-        obj.map { |x| deep_dup(x) }
-      when Hash
-        obj.transform_values { |v| deep_dup(v) }
-      else
-        obj.dup
-      end
-    end
+    # def deep_dup(obj)
+    #   case obj
+    #   when Array
+    #     obj.map { |x| deep_dup(x) }
+    #   when Hash
+    #     obj.transform_values { |v| deep_dup(v) }
+    #   else
+    #     obj.dup
+    #   end
+    # end
 
     def deep_merge(hash1, hash2)
       hash = deep_dup(hash1)
