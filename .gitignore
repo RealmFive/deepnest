@@ -2,4 +2,12 @@
 .vscode/
 .DS_Store
 .env
-tmp/
+
+/.bundle/
+/.yardoc
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
