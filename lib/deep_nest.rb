@@ -4,21 +4,27 @@ require_relative "deep_nest/version"
 
 module DeepNest
   class << self
-    # def deep_dup(obj)
-    #   case obj
-    #   when Array
-    #     obj.map { |x| deep_dup(x) }
-    #   when Hash
-    #     obj.transform_values { |v| deep_dup(v) }
-    #   else
-    #     obj.dup
-    #   end
-    # end
+    def deep_dup(obj)
+      case obj
+      when Array
+        obj.map { |x| deep_dup(x) }
+      when Hash
+        obj.transform_values { |v| deep_dup(v) }
+      else
+        obj
+      end
+    end
 
-    def deep_merge(hash1, hash2)
-      hash = deep_dup(hash1)
-      hash2.each { |k, v| hash[k] = v }
-      hash
+    def deep_merge(hash1, hash2, &block)
+      hash1.merge(hash2) do |k, v1, v2|
+        if v1.is_a?(Hash) && v2.is_a?(Hash)
+          deep_merge(v1, v2, &block)
+        elsif block_given?
+          block.call(k, v1, v2)
+        else
+          v2
+        end
+      end
     end
 
     def deep_equal?(obj1, obj2)
