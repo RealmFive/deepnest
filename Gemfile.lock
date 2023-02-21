@@ -1,3 +1,12 @@
+PATH
+  remote: .
+  specs:
+    deep_nest (0.1.0)
+      guard
+      guard-rspec
+      rake (~> 13.0)
+      rspec
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -31,6 +40,7 @@ GEM
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
+    rake (13.0.6)
     rb-fsevent (0.10.4)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -55,8 +65,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  deep_nest!
   guard
   guard-rspec
+  rake (~> 13.0)
   rspec
 
 BUNDLED WITH

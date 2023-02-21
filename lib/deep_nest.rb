@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "deep_nest/version"
+
 module DeepNest
   class << self
     def deep_dup(obj)
